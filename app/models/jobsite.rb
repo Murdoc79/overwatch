@@ -1,0 +1,2 @@
+class Jobsite < ApplicationRecord
+end
