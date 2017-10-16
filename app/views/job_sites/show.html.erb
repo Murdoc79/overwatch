@@ -4,6 +4,13 @@
   <strong>Address:</strong>
   <%= @job_site.address %>
 </p>
-
+<p>
+  <strong>Builder:</strong>
+  <%= @job_site.builder.name %>
+</p>
+<p>
+  <strong>Stage:</strong>
+  <%= @job_site.building_stage.stage %>
+</p>
 <%= link_to 'Edit', edit_job_site_path(@job_site) %> |
 <%= link_to 'Back', job_sites_path %>

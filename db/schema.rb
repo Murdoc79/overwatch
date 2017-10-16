@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016174206) do
+ActiveRecord::Schema.define(version: 20171016194242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "builders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "building_stages", force: :cascade do |t|
     t.string "stage"
@@ -23,6 +29,17 @@ ActiveRecord::Schema.define(version: 20171016174206) do
 
   create_table "job_sites", force: :cascade do |t|
     t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "builder_id"
+    t.bigint "building_stage_id"
+    t.index ["builder_id"], name: "index_job_sites_on_builder_id"
+    t.index ["building_stage_id"], name: "index_job_sites_on_building_stage_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
