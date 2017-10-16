@@ -1,0 +1,2 @@
+module BuildingStagesHelper
+end
