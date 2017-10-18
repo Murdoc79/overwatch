@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Supervisors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Builder</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supervisors.each do |supervisor| %>
+      <tr>
+        <td><%= supervisor.name %></td>
+        <td><%= supervisor.phone %></td>
+        <td><%= supervisor.builder.name %></td>
+        <td><%= link_to 'Edit', edit_supervisor_path(supervisor) %></td>
+        <td><%= link_to 'Destroy', supervisor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Supervisor', new_supervisor_path %>
+<BR>
+<%= link_to 'Main', 'reports/main' %>
+

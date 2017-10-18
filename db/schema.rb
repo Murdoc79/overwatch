@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016194242) do
+ActiveRecord::Schema.define(version: 20171017231523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.string "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "builders", force: :cascade do |t|
     t.string "name"
@@ -33,8 +40,12 @@ ActiveRecord::Schema.define(version: 20171016194242) do
     t.datetime "updated_at", null: false
     t.bigint "builder_id"
     t.bigint "building_stage_id"
+    t.bigint "area_id"
+    t.bigint "supervisor_id"
+    t.index ["area_id"], name: "index_job_sites_on_area_id"
     t.index ["builder_id"], name: "index_job_sites_on_builder_id"
     t.index ["building_stage_id"], name: "index_job_sites_on_building_stage_id"
+    t.index ["supervisor_id"], name: "index_job_sites_on_supervisor_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -42,6 +53,17 @@ ActiveRecord::Schema.define(version: 20171016194242) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "job_site_id"
+    t.index ["job_site_id"], name: "index_notes_on_job_site_id"
+  end
+
+  create_table "supervisors", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "builder_id"
+    t.index ["builder_id"], name: "index_supervisors_on_builder_id"
   end
 
 end

@@ -10,6 +10,7 @@ class JobSitesController < ApplicationController
   # GET /job_sites/1
   # GET /job_sites/1.json
   def show
+    @notes = @job_site.notes
   end
 
   # GET /job_sites/new
@@ -69,6 +70,6 @@ class JobSitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_site_params
-      params.require(:job_site).permit(:address, :builder_id, :building_stage_id)
+      params.require(:job_site).permit(:address, :builder_id, :building_stage_id, :area_id, :supervisor_id)
     end
 end

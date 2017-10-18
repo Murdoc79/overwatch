@@ -3,9 +3,6 @@ class NotesController < ApplicationController
 
   # GET /notes
   # GET /notes.json
-  def index
-    @notes = Note.all
-  end
 
   # GET /notes/1
   # GET /notes/1.json
@@ -14,6 +11,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
+    @job_site_id = params[:job_site_id]
     @note = Note.new
   end
 
@@ -25,10 +23,12 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
+    @note.job_site_id = params[:job_site_id]
+    @job_site = JobSite.find(@note.job_site_id)
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to @job_site, notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
       else
         format.html { render :new }
@@ -41,8 +41,9 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
+      @job_site = JobSite.find(@note.job_site_id)
       if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.html { redirect_to @job_site, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
+      format.html { redirect_to job_site_url(@note.job_site_id), notice: 'Note was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :body)
+      params.require(:note).permit(:title, :body, :job_site_id)
     end
 end

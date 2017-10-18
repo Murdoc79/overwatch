@@ -16,6 +16,14 @@
     <%= form.text_field :address, id: :job_site_address %>
   </div>
   <div class="field">
+    <%= form.label :supervisor %>
+    <%= collection_select( :job_site, :supervisor_id, Supervisor.all, :id, :name, :prompt => true ) %>
+  </div>
+  <div class="field">
+    <%= form.label :area %>
+    <%= collection_select( :job_site, :area_id, Area.all, :id, :name, :prompt => true ) %>
+  </div>
+  <div class="field">
     <%= form.label :builder %>
     <%= collection_select( :job_site, :builder_id, Builder.all, :id, :name, :prompt => true ) %>
   </div>
@@ -23,6 +31,7 @@
     <%= form.label :building_stage %>
     <%= collection_select( :job_site, :building_stage_id, BuildingStage.all, :id, :stage, :prompt => true ) %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

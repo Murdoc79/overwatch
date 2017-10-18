@@ -1,3 +1,96 @@
 // Place all the styles related to the Jobsites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show-job-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: minmax(30px,auto);
+	grid-gap: 0px;
+	border-top: #000, solid;
+
+}
+
+.show-job-container > div {
+	padding: 0px;
+}
+
+.address-box {
+	grid-column: 1/3;
+	grid-row: 1;
+	border-bottom: 1px solid #000;
+	border-left: 3px solid #000;
+	border-top: 3px solid #000;
+}
+
+.area-box {
+	grid-column: 3;
+	grid-row: 1;
+	border-bottom: 1px solid #000;
+	border-right: 3px solid #000;
+	border-top: 3px solid #000;
+}
+
+.builder-box {
+	grid-column: 1;
+	grid-row: 2;
+	border-bottom: 3px solid #000;
+	border-left: 3px solid #000;
+}
+
+.supervisor-box {
+	grid-column: 2;
+	grid-row: 2;	
+	border-bottom: 3px solid #000;
+}
+
+.stage-box {
+	grid-column: 3;
+	grid-row: 2;	
+	border-bottom: 3px solid #000;
+	border-right: 3px solid #000;
+}
+
+.notes-box {
+	display: grid;
+	grid-column: 1/4;
+	grid-row: 3;
+	grid-template-columns: 4fr 1fr;
+	grid-template-rows: minmax(30px, auto)
+}
+
+
+
+.notes-title {
+	padding-top: 15px;
+	padding-bottom: 4px;
+	padding-left: 15px;
+	font-size: 16px;
+	grid-column: 1/3;
+	border-bottom: 2px solid #EEE;	
+}
+
+.notes-entry {
+	border-bottom: 2px solid #EEE;
+}
+
+.notes-navi {
+	padding-top: 10px;
+	padding-left: 15px;
+	border-bottom: 2px solid #EEE;
+}
+
+.notes-new {
+	grid-column: 1/3;
+	padding-top: 10px;
+	padding-left: 15px;
+	border-bottom: 2px solid #EEE;
+}
+
+
+
+
+
+
+
+

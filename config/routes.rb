@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resources :supervisors
+  resources :areas
   resources :notes
   resources :builders
   resources :building_stages
-  resources :job_sites
+  resources :job_sites do 
+  	resources :notes
+  end
   
 
   get 'reports/main'
