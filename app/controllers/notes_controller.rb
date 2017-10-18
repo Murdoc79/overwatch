@@ -1,12 +1,12 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   # GET /notes
-  # GET /notes.json
+  def index
+  end
 
   # GET /notes/1
-  # GET /notes/1.json
   def show
+    @note = Note.find(params[:id])
   end
 
   # GET /notes/new
@@ -17,57 +17,41 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
+    @note = Note.find(params[:id])
   end
 
   # POST /notes
-  # POST /notes.json
   def create
     @note = Note.new(note_params)
     @note.job_site_id = params[:job_site_id]
     @job_site = JobSite.find(@note.job_site_id)
 
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @job_site, notice: 'Note was successfully created.' }
-        format.json { render :show, status: :created, location: @note }
-      else
-        format.html { render :new }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    if @note.save
+      redirect_to @job_site, notice: 'Note was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /notes/1
-  # PATCH/PUT /notes/1.json
   def update
-    respond_to do |format|
-      @job_site = JobSite.find(@note.job_site_id)
-      if @note.update(note_params)
-        format.html { redirect_to @job_site, notice: 'Note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @note }
-      else
-        format.html { render :edit }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    @note = Note.find(params[:id])
+    @job_site = JobSite.find(@note.job_site_id)
+    if @note.update(note_params)
+      redirect_to @job_site, notice: 'Note was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /notes/1
-  # DELETE /notes/1.json
   def destroy
+    @note = Note.find(params[:id])
     @note.destroy
-    respond_to do |format|
-      format.html { redirect_to job_site_url(@note.job_site_id), notice: 'Note was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to job_site_url(@note.job_site_id), notice: 'Note was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
       params.require(:note).permit(:title, :body, :job_site_id)
