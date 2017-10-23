@@ -1,0 +1,1 @@
+Refile.store = Refile::Backend::FileSystem.new(Rails.root.join('public/uploads/refile_store').to_s)

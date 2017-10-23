@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :notes
   resources :builders
   resources :building_stages
+  resources :images, only: [:create, :destroy]
   resources :job_sites do 
   	resources :notes
   end

@@ -2,6 +2,7 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
+    @notes = Note.all
   end
 
   # GET /notes/1
@@ -36,7 +37,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   def update
     @note = Note.find(params[:id])
-    @job_site = JobSite.find(@note.job_site_id)
+    @job_site = @note.job_site
     if @note.update(note_params)
       redirect_to @job_site, notice: 'Note was successfully updated.'
     else

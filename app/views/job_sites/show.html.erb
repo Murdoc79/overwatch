@@ -28,7 +28,7 @@
 	<% @notes.each do |note| %>
 		<div class="box notes-entry">
 			<p><%= note.title + " - " + note.created_at.strftime("%b %-d, %Y") %></p>
-			<p><%= note.body %></p>
+			<p><%= note.body.html_safe %></p>
 		</div>
 		<div class="box notes-navi">
 			<%= link_to 'Edit Note', edit_job_site_note_path(@job_site, note) %>

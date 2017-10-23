@@ -10,6 +10,63 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require trix
  *= require_tree .
  *= require_self
+
  */
+
+/*
+.attachment__caption {
+	display: none;
+}
+
+.attachment__size {
+	display: none;
+}
+
+.attachment__name {
+	display: none;
+}{
+	display: none;
+}
+
+.attachment__caption-editor {
+	display: none;
+}
+
+.attachment__remove {
+	display: none;
+}
+
+.attachment #span {
+	display: none;
+}
+
+*/
+
+.attachment .caption {
+    display: block;
+    margin: 4px auto 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+.attachment .caption {
+    display: block;
+    margin: 4px auto 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+trix-editor .attachment .remove {
+  display: table !important;
+  position: relative !important;
+  margin: 0 auto !important;
+  font-size: 12px !important;
+  width: auto !important;
+  padding: 0px 10px !important;
+  height: 24px !important;
+  top: 0px !important;
+  right: 0px !important;
+}
