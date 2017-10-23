@@ -46,10 +46,10 @@ class BuildersController < ApplicationController
   end
 
   # DELETE /builders/1
-  @builder = Builder.find(params[:id])
-  def destroy
-    @builder.destroy
 
+  def destroy  
+    @builder = Builder.find(params[:id])
+    @builder.destroy
     redirect_to builders_url, notice: 'Builder was successfully destroyed.'
 
   end
