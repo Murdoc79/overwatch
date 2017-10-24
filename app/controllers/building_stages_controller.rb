@@ -26,7 +26,7 @@ class BuildingStagesController < ApplicationController
 
 
     if @building_stage.save
-      redirect_to @building_stage, notice: 'Building stage was successfully created.' 
+      redirect_to building_stages_url, notice: 'Building stage was successfully created.' 
     else
       render :new 
     end
@@ -38,7 +38,7 @@ class BuildingStagesController < ApplicationController
     @building_stage = BuildingStage.find(params[:id])
 
     if @building_stage.update(building_stage_params)
-      redirect_to @building_stage, notice: 'Building stage was successfully updated.' 
+      redirect_to building_stages_url, notice: 'Building stage was successfully updated.' 
     else
       render :edit 
     end

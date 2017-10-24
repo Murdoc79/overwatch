@@ -33,12 +33,10 @@ class SupervisorsController < ApplicationController
   # PATCH/PUT /supervisors/1
   def update
     @supervisor = Supervisor.find(params[:id])
-    respond_to do |format|
-      if @supervisor.update(supervisor_params)
-        format.html { redirect_to supervisors_url, notice: 'Supervisor was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @supervisor.update(supervisor_params)
+      redirect_to supervisors_url, notice: 'Supervisor was successfully updated.'
+    else
+      render :edit
     end
   end
 

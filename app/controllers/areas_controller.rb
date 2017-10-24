@@ -26,7 +26,7 @@ class AreasController < ApplicationController
 
 
     if @area.save
-      redirect_to @area, notice: 'Area was successfully created.' 
+      redirect_to areas_url, notice: 'Area was successfully created.' 
     else
       render :new 
     end
@@ -38,7 +38,7 @@ class AreasController < ApplicationController
     @area = Area.find(params[:id])
 
     if @area.update(area_params)
-      redirect_to @area, notice: 'Area was successfully updated.'
+      redirect_to areas_url, notice: 'Area was successfully updated.'
     else
       render :edit 
     end

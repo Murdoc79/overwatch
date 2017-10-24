@@ -26,7 +26,7 @@ class BuildersController < ApplicationController
 
 
     if @builder.save
-      redirect_to @builder, notice: 'Builder was successfully created.' 
+      redirect_to builders_url, notice: 'Builder was successfully created.' 
     else
       render :new 
     end
@@ -38,7 +38,7 @@ class BuildersController < ApplicationController
     @builder = Builder.find(params[:id])
 
     if @builder.update(builder_params)
-      redirect_to @builder, notice: 'Builder was successfully updated.' 
+      redirect_to builders_url, notice: 'Builder was successfully updated.' 
     else
       render :edit 
     end

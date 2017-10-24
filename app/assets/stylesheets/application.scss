@@ -16,7 +16,34 @@
 
  */
 
-/*
+#columns {
+  display: flex;
+
+  #main {
+    padding: 1em;
+    flex: 1;
+  }
+
+  #side {
+    padding: 3em 3em;
+
+    ul {
+      padding: 0;
+
+      li {
+        padding: .5em 0;
+        list-style: none;
+
+        a {
+          font-size: small;
+        }
+      }
+    }
+  }
+}
+
+
+/* TRIX SHIT
 .attachment__caption {
 	display: none;
 }
@@ -42,8 +69,13 @@
 .attachment #span {
 	display: none;
 }
-
 */
+
+
+
+
+
+
 
 .attachment .caption {
     display: block;

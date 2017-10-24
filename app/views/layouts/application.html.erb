@@ -9,6 +9,28 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<div id="columns">
+  		<div id="side">
+
+				<ul>
+					<% if is_electrician? %>
+						<li>Electrician</li>
+					<% end %>
+					<% if is_admin? %>
+		        <li><%= link_to 'Job Sites', job_sites_path %></li>
+		        <li><%= link_to 'Areas', areas_path %></li>
+		        <li><%= link_to 'Building Stages', building_stages_path %></li>
+		        <li><%= link_to 'Builders', builders_path %></li>
+		        <li><%= link_to "Supervisors", supervisors_path %></li>
+		       	<li><%= link_to "Users", users_path %></li>
+		      <% end %>
+	        <li><%= link_to "logout", logout_path, method: :delete %></li>
+	      </ul>
+
+  		</div>
+
+	  	<div id="main">
+		    <%= yield %>
+		  </div>
   </body>
 </html>
