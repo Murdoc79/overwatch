@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Guides</h1>
+
+
+<dl class="guides">
+  <% @guide_sections.each do |guide_section| %>
+    <dt><%= guide_section.title %> 
+      <% if is_admin? %>
+        <%= link_to '(Edit)', edit_guide_section_path(guide_section) %></dt>
+      <% end %>
+    <% if guide_section.guides.count == 0 %>
+      <dd>No guides in this section</dd>
+    <% else %>
+      <% guide_section.guides.each do |guide| %>
+        <dd><%= link_to guide.title, guide_section_guide_path(guide_section.id, guide.id) %></dd>  
+      <% end %>
+    <% end %>
+    <% if is_admin? %>
+      <dd class="new"><%= link_to 'Write a new guide in the ' + guide_section.title + ' section', new_guide_section_guide_path(guide_section.id) %></dd>
+    <% end %>
+  <% end %>
+  <dt>Misc. Guides (No Section)</dt>
+  <% if @no_section_guides.count == 0 %>
+    <dd>No guides in this section</dd>
+  <% else %>
+    <% @no_section_guides.each do |guide| %>
+      <dd><%= link_to guide.title, guide_path(guide.id) %></dd>
+    <% end %>
+  <% end %>
+  <% if is_admin? %>
+    <dd class="new"><%= link_to "Write a new guide", new_guide_path %></dd>
+  <% end %>
+</dl>
+
+
+<br>
+
+<% if is_admin? %>
+  <%= link_to 'New Guide Section', new_guide_section_path %>
+<% end %>
+
+

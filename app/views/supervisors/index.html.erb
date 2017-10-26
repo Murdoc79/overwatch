@@ -17,7 +17,11 @@
       <tr>
         <td><%= supervisor.name %></td>
         <td><%= supervisor.phone %></td>
-        <td><%= supervisor.builder.name %></td>
+        <% if supervisor.builder %>
+          <td><%= supervisor.builder.name %></td>
+        <% else %>
+          <td>N/A</td>
+        <% end %>
         <td><%= link_to 'Edit', edit_supervisor_path(supervisor) %></td>
         <td><%= link_to 'Destroy', supervisor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

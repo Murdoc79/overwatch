@@ -21,9 +21,9 @@
     <%= form.text_field :phone, id: :supervisor_phone %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= form.label :builder %>
-    <%= collection_select( :supervisor, :builder_id, Builder.all, :id, :name, :prompt => true ) %>
+    <%= collection_select( :supervisor, :builder_id, Builder.all, :id, :name, :include_blank => "No builder" ) %>
   </div>
 
   <div class="actions">
