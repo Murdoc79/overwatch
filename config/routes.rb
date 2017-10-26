@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   end
   
 
-  get 'reports/main'
-
+  get 'reports/main', as: 'main'
+  get 'reports/phone_list', as: 'phone_list'
 
   root 'sessions#new'
 

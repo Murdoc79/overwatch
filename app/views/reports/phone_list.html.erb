@@ -1,0 +1,29 @@
+<H1>Phone List</H1>
+
+<table class="phone_list">
+	<% @builders.each do |builder| %>
+		<% if builder.supervisors.count > 0 %>
+			<tr>
+				<th colspan=2><%= builder.name %></th>
+			</tr>
+			<% builder.supervisors.each do |supervisor| %>
+				<tr>
+					<td><%= supervisor.name %></td>
+					<td><%= supervisor.phone %></td>
+				</tr>
+			<% end %>
+		<% end %>
+	<% end %>
+	<% if @supers_without_builders.count > 0 %>
+		<tr>
+			<th colspan=2>Others</th>
+		</tr>
+		<% @supers_without_builders.each do |supervisor| %>
+			<tr>
+				<td><%= supervisor.name %></td>
+				<td><%= supervisor.phone %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
+
