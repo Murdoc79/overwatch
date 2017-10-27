@@ -20,7 +20,7 @@
       <dd class="new"><%= link_to 'Write a new guide in the ' + guide_section.title + ' section', new_guide_section_guide_path(guide_section.id) %></dd>
     <% end %>
   <% end %>
-  <dt>Misc. Guides (No Section)</dt>
+  <dt>Misc. Guides <% if is_admin? %>(No Section)<% end %></dt>
   <% if @no_section_guides.count == 0 %>
     <dd>No guides in this section</dd>
   <% else %>
