@@ -8,6 +8,8 @@ config/database.yml
 config/deploy.rb
 config/secrets.yml
 
+public/uploads/refile_store
+
 # Ignore bundler config.
 /.bundle
 

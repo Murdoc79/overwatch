@@ -54,6 +54,11 @@
   }
 }
 
+/* Remove caption area from TRIX images */
+a span {
+  display: none;
+}
+
 .guides {
   
   dt {

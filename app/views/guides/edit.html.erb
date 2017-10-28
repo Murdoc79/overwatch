@@ -3,4 +3,5 @@
 <%= render 'form', guide: @guide %>
 
 <%= link_to 'Show', @guide %> |
+<%= link_to 'Delete', @guide, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <%= link_to 'Back', guide_sections_path %>
